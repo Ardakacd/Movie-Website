@@ -1,0 +1,23 @@
+.outer {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 8px;
+}
+
+.inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.images {
+    border-radius: 10px;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 4px;
+}
+
+.hrr {
+    border: 0.5px solid black;
+    margin-bottom: 8px;
+}

@@ -1,0 +1,77 @@
+@model MovieModel
+
+@{
+    Layout = "_Layout";
+}
+
+
+<div class="container mt-5">
+
+    <div class="row">
+<div class="col-4">
+
+    <img src="~/images/@Model.PhotoUrl" class="img-fluid">
+
+</div>
+
+<div class="col-8">
+
+  <h5 class="text-info">@Model.Name</h5>
+
+            <p >Imdb:@Model.Imdb</p>
+
+            
+            <p >Yönetmen:@Model.director.Name</p>
+
+               <p class="card-text d-inline">Kategoriler:
+               @for (int i = 0; i < @Model.categories.Count(); i++)
+               {
+                   @if(i == @Model.categories.Count-1){
+                       <span>@Model.categories[i].CategoryName</span>
+                   }else{
+                       <span>@Model.categories[i].CategoryName,</span>
+
+                   }
+               }
+                </p>
+
+
+
+</div>
+
+    </div>
+
+    <div class="row mt-5 mb-5">
+        <p class="font-weight-bold lead">Oyuncular:</p>
+
+        @foreach (var item in @Model.players)
+        {
+            <div class="col-3">
+                <div class="card">
+
+        <div class="card-body">
+            
+            
+            <img src="~/images/@item.PhotoUrl" class="card-image img-fluid  w-100 h-100">
+
+
+            <h5 class="card-title text-center mt-2 mb-1">@item.Name</h5>
+
+           
+        
+
+        </div>
+
+        <div class="card-footer d-flex justify-content-center">
+            
+
+            <a href="/player-detail/@item.PlayerId" class="btn btn-success">Detay</a>
+        </div>
+
+                </div>
+            </div>   
+
+        }
+
+    </div>
+</div>

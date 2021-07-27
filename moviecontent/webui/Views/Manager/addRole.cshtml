@@ -1,0 +1,41 @@
+@model AddRoleModel
+@{
+    Layout = "_Layout";
+}
+
+<div class="container mt-5 mb-5">
+
+
+
+<form action="/manager/addRole" method="POST">
+@Html.AntiForgeryToken()
+
+<div class="form">
+
+      <div class="text-danger" asp-validation-summary="All">
+        
+    </div>
+
+     <div class="form-group">
+    <label for="exampleInputEmail1">Rol adı:</label>
+    <input  class="form-control" id="exampleInputEmail1" asp-for="@Model.RoleName" placeholder="Rolün adını giriniz.">
+      <span asp-validation-for="RoleName" class="text-danger"></span>
+    
+
+  </div>
+
+
+  
+
+   <button type="submit" class="btn btn-primary">Rolü Ekle</button>
+
+
+</div>
+
+
+
+
+
+
+</form>
+</div>

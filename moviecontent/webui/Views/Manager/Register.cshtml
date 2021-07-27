@@ -1,0 +1,86 @@
+@model RegisterModel
+
+@{
+    Layout = "_Layout";
+}
+
+<div class="container mt-5 mb-5">
+
+    @if(@TempData["EmailErrorMessage"] != null){
+
+    <div class="alert alert-danger">
+        @TempData["EmailErrorMessage"]
+    </div>
+}
+
+<form action="/manager/register" method="POST">
+@Html.AntiForgeryToken()
+
+<div class="form">
+
+      <div class="text-danger" asp-validation-summary="All">
+        
+    </div>
+
+     <div class="form-group">
+    <label for="exampleInputEmail1">Adınız:</label>
+    <input  class="form-control" id="exampleInputEmail1" asp-for="@Model.firstName" placeholder="Adınızı giriniz.">
+    <small id="emailHelp" class="form-text text-muted">İki adınız varsa ikisini de lütfen bu kısıma giriniz.</small>
+      <span asp-validation-for="firstName" class="text-danger"></span>
+    
+
+  </div>
+
+   <div class="form-group">
+    <label for="exampleInputEmail1">Soyadınız:</label>
+    <input  class="form-control" id="exampleInputEmail1" asp-for="@Model.lastName" placeholder="Soyadınızı giriniz.">
+      <span asp-validation-for="lastName" class="text-danger"></span>
+    
+
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">Kullanıcı Adınız:</label>
+    <input  class="form-control" id="exampleInputEmail1" asp-for="@Model.userName" placeholder="Kullanıcı adınızı giriniz.">
+    <small id="emailHelp" class="form-text text-muted">Diğer insanlar sizi bu adınız ile görecektir.</small>
+      <span asp-validation-for="userName" class="text-danger"></span>
+  </div>
+
+
+
+     <div class="form-group">
+    <label for="exampleInputEmail1">Email adresiniz:</label>
+    <input  class="form-control" id="exampleInputEmail1" asp-for="@Model.email" placeholder="Email adresinizi giriniz.">
+    <small id="emailHelp" class="form-text text-muted">Email adresiniz kimse ile paylaşılmayacaktır.</small>
+      <span asp-validation-for="email" class="text-danger"></span>
+  </div>
+
+   <div class="form-group">
+    <label for="exampleInputEmail1">Şifreniz:</label>
+    <input  class="form-control" id="exampleInputEmail1" asp-for="@Model.password" placeholder="Şifrenizi giriniz.">
+    <small id="emailHelp" class="form-text text-muted">Şİfreniz kimse ile paylaşılmayacaktır.</small>
+      <span asp-validation-for="password" class="text-danger"></span>
+  </div>
+
+   <div class="form-group">
+    <label for="exampleInputEmail1">Şifre Tekrar:</label>
+    <input  class="form-control" id="exampleInputEmail1" asp-for="@Model.rePassword" placeholder="Şifrenizi tekrardan giriniz.">
+      <span asp-validation-for="rePassword" class="text-danger"></span>
+      
+    
+  </div>
+
+   <button type="submit" class="btn btn-primary">Kayıt ol</button>
+
+<div class="text-center">
+   <a href="/manager/login">Önceden kayıt oldunuz mu?</a>
+   </div>
+</div>
+
+
+
+
+
+
+</form>
+</div>

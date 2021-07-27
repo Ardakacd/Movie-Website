@@ -1,0 +1,12 @@
+/Users/ardakabadayi/Desktop/movieapp/moviecontent/entity/bin/Debug/net5.0/entity.deps.json
+/Users/ardakabadayi/Desktop/movieapp/moviecontent/entity/bin/Debug/net5.0/entity.dll
+/Users/ardakabadayi/Desktop/movieapp/moviecontent/entity/bin/Debug/net5.0/ref/entity.dll
+/Users/ardakabadayi/Desktop/movieapp/moviecontent/entity/bin/Debug/net5.0/entity.pdb
+/Users/ardakabadayi/Desktop/movieapp/moviecontent/entity/obj/Debug/net5.0/entity.csprojAssemblyReference.cache
+/Users/ardakabadayi/Desktop/movieapp/moviecontent/entity/obj/Debug/net5.0/entity.GeneratedMSBuildEditorConfig.editorconfig
+/Users/ardakabadayi/Desktop/movieapp/moviecontent/entity/obj/Debug/net5.0/entity.AssemblyInfoInputs.cache
+/Users/ardakabadayi/Desktop/movieapp/moviecontent/entity/obj/Debug/net5.0/entity.AssemblyInfo.cs
+/Users/ardakabadayi/Desktop/movieapp/moviecontent/entity/obj/Debug/net5.0/entity.csproj.CoreCompileInputs.cache
+/Users/ardakabadayi/Desktop/movieapp/moviecontent/entity/obj/Debug/net5.0/entity.dll
+/Users/ardakabadayi/Desktop/movieapp/moviecontent/entity/obj/Debug/net5.0/ref/entity.dll
+/Users/ardakabadayi/Desktop/movieapp/moviecontent/entity/obj/Debug/net5.0/entity.pdb

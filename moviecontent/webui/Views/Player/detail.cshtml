@@ -1,0 +1,67 @@
+@model PlayerModel
+
+@{
+    Layout = "_Layout";
+}
+
+
+<div class="container mt-5">
+
+    <div class="row">
+<div class="col-4">
+
+    <img src="~/images/@Model.PhotoUrl" class="img-fluid">
+
+</div>
+
+<div class="col-8">
+
+  <h5 class="text-info">@Model.Name</h5>
+
+            <p >Yaş:@Model.Age</p>
+
+            
+            <p >Imdb:@Model.Imdb</p>
+
+            <p>Doğum Tarihi: @Model.Birthday.ToShortDateString()</p>
+
+
+
+</div>
+
+    </div>
+
+    <div class="row mt-5 mb-5">
+        <p class="font-weight-bold lead">Oynadığı Filmler:</p>
+
+        @foreach (var item in @Model.movies)
+        {
+            <div class="col-3">
+                <div class="card">
+
+        <div class="card-body">
+            
+            
+            <img src="~/images/@item.PhotoUrl" class="card-image img-fluid  w-100 h-100">
+
+
+            <h5 class="card-title text-center mt-2 mb-1">@item.Name</h5>
+
+           
+        
+
+        </div>
+
+        <div class="card-footer d-flex justify-content-center">
+            
+
+            <a href="/movie-detail/@item.MovieId" class="btn btn-success">Detay</a>
+        </div>
+
+                </div>
+            </div>   
+
+        }
+
+    </div>
+</div>

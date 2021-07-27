@@ -1,0 +1,62 @@
+@model MovieListModel
+@{
+    Layout = "_Layout";
+}
+
+<div class="container mt-5">
+
+    <div class="row">
+
+        @foreach (var item in @Model.movies)
+        {
+            <div class="col-3">
+                <div class="card">
+
+        <div class="card-body">
+            
+            
+            <img src="~/images/@item.PhotoUrl" class="card-image img-fluid w-100 h-100">
+            <h5 class="card-title">@item.Name</h5>
+
+            <p class="card-text">Imdb:@item.Imdb</p>
+
+            <p class="card-text">Yönetmen:@item.director.Name</p>
+
+
+            <p class="card-text d-inline">Kategoriler:
+               @for (int i = 0; i < @item.categories.Count(); i++)
+               {
+                   @if(i == @item.categories.Count-1){
+                       <span>@item.categories[i].category.CategoryName</span>
+                   }else{
+                       <span>@item.categories[i].category.CategoryName,</span>
+
+                   }
+               }
+                </p>
+
+                
+
+
+
+        </div>
+
+        <div class="card-footer">
+            @item.ReleaseTime.ToShortDateString()
+
+            <a href="/movie-detail/@item.MovieId" class="btn btn-success ml-3">Detay</a>
+        </div>
+
+                </div>
+            </div>   
+
+        }
+
+
+
+
+
+    </div>
+</div>
+
+

@@ -1,0 +1,64 @@
+@model LoginModel
+
+@{
+    Layout = "_Layout";
+    
+}
+
+<div class="container mt-5 mb-5">
+
+@if(@TempData["Register"] != null){
+
+    <div class="alert alert-success">
+        @TempData["Register"]
+    </div>
+}
+
+@if(@TempData["EmailRemainder"] != null){
+
+    <div class="alert alert-danger">
+        @TempData["EmailRemainder"]
+    </div>
+}
+
+@if(@TempData["PasswordChange"] != null){
+
+    <div class="alert alert-success">
+        @TempData["PasswordChange"]
+    </div>
+}
+
+
+<form action="/manager/login" method="POST">
+@Html.AntiForgeryToken()
+
+<div class="form">
+
+    <div class="text-danger" asp-validation-summary="All">
+
+    </div>
+
+
+     <div class="form-group">
+    <label for="exampleInputEmail1">Email adresiniz:</label>
+    <input  class="form-control" id="exampleInputEmail1" asp-for="@Model.email" placeholder="Email adresinizi giriniz.">
+    <span asp-validation-for="email" class="text-danger"></span>
+   
+  </div>
+
+   <div class="form-group">
+    <label for="exampleInputEmail1">Şifreniz:</label>
+    <input  class="form-control" id="exampleInputEmail1" asp-for="@Model.password" placeholder="Şifrenizi giriniz.">
+    <span asp-validation-for="password" class="text-danger"></span>
+  </div>
+
+   <button type="submit" class="btn btn-primary">Giriş Yap</button>
+
+   <a href="/manager/forgetPassword">Şifremi Unuttum</a>
+
+
+
+
+</div>
+</form>
+</div>

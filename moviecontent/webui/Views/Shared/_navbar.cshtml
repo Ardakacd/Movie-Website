@@ -1,0 +1,76 @@
+
+@model MyLayoutViewModel;
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+  <a class="navbar-brand" href="/home">MovieApp</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+@if(!User.Identity.IsAuthenticated){  
+
+<ul class="navbar-nav mr-auto">
+   <li class="nav-item">
+        <a class="nav-link" href="/manager/register">Kayıt Ol</a>
+      </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/manager/login">Giriş Yap</a>
+      </li>
+
+    
+      </ul>
+}
+
+@if(User.Identity.IsAuthenticated){
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/home">Ana Sayfa <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/movies">Filmler</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Kategoriler
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          @foreach (var item in @Model.categories)
+          {
+              <a class="dropdown-item" href="/categories/@item.CategoryId">@item.CategoryName</a>
+          }
+          
+        </div>
+      </li>
+
+       <li class="nav-item">
+        <a class="nav-link" href="/players">Oyuncular</a>
+      </li>
+  
+   <li class="nav-item">
+        <a class="nav-link" href="/directors">Yönetmenler</a>
+      </li>
+
+         <li class="nav-item ml-auto">
+        <a class="nav-link" href="/manager/logout">Oturumu kapat</a>
+      </li>
+      @if(User.IsInRole("Admin")){
+        <li class="nav-item">
+        <a class="nav-link" href="/manager/addRole">Rol ekle</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/manager/roleList">Rolleri görüntüle</a>
+      </li>
+      }
+    </ul>
+
+
+    <form class="form-inline my-2 my-lg-0" action="/search">
+      <input class="form-control mr-sm-2" type="search" name="Name" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+}
+  </div>
+</nav>

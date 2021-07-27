@@ -1,0 +1,65 @@
+@model IEnumerable<IdentityRole>
+
+@{
+    Layout = "_Layout";
+}
+@if(@TempData["RoleAdded"] != null){
+    <div class="alert alert-success">
+        @TempData["RoleAdded"]
+    </div>
+}
+
+@if(@TempData["RoleDeleteMessage"] != null){
+    <div class="alert alert-info">
+        @TempData["RoleDeleteMessage"]
+    </div>
+}
+
+
+
+<div class="container mt-5 mb-5 w-50">
+
+@if(Model.Count() == 0){
+    <div class="alert alert-danger">
+        Herhangi bir rol yok!
+    </div>
+}else{
+
+<table class="table table-bordered">
+
+<tr>
+    <th class="">Rol ismi</th>
+    <th>Rol işlemler</th>
+</tr>
+
+@foreach (var item in @Model)
+{
+    <tr>
+        <td>
+            @item.Name
+        </td>
+
+        <td>
+            <a href="/manager/roleDetails/@item.Id" class="btn btn-info ">Düzenle</a>
+
+              <form action="/manager/deleteRole/@item.Id" method="POST" class="d-inline">
+                <button class="btn btn-danger " type="submit">Sil</button>
+            </form>
+
+
+        </td>
+
+
+    </tr>
+}
+
+
+
+
+
+
+
+</table>
+}
+
+</div>

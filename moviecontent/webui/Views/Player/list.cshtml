@@ -1,0 +1,52 @@
+@model PlayerListModel
+
+@{
+    Layout = "_Layout";
+}
+
+<link rel="stylesheet" href="~/css/list.css">
+
+
+<div class="container mt-5">
+
+<div class="row">
+
+
+        @foreach (var item in @Model.players)
+        {
+            <div class="col-3">
+
+
+                <div class="outer ">
+
+                    <img src="~/images/@item.PhotoUrl" class="img-fluid images mx-auto">
+
+                    <p>İsmi:@item.Name</p>
+                    <p>Yaşı:@item.Age</p>
+                    <p>Imdb:@item.Imdb</p>
+
+                    <hr class="hrr">
+
+                    <div class="inner">
+
+                        <a class="btn btn-primary">Detay</a>
+
+                    </div>
+
+
+
+                </div>
+            </div>   
+
+
+        }
+
+
+
+
+
+
+    </div>
+</div>
+
+

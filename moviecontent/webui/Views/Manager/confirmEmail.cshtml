@@ -1,0 +1,11 @@
+@{
+    Layout = "_Layout";
+}
+
+
+ 
+@if(@ViewData["EmailMessage"] != null){
+    <div class="text-success">
+        @ViewData["EmailMessage"]
+    </div>
+}                

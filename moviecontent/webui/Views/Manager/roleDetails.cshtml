@@ -1,0 +1,102 @@
+@model RoleDetailModel;
+
+@{
+    Layout ="_Layout";
+}
+
+
+<div class="container mt-5 mb-5">
+
+
+    <h3 class="mb-4"><span class="text-info">@Model.roleName </span> isimli rolü düzenle.</h5>
+
+
+    <form action="/manager/roleDetails" method="POST">
+
+    <input type="hidden" name="roleId" value="@Model.roleId">
+
+    <input type="hidden" name="roleName" value="@Model.roleName">
+
+    <h5 > 
+        <span class="text-info">@Model.roleName </span> isimli rolden kullanıcı çıkar.
+    </h5>
+
+    @if(Model.Members.Count() == 0){
+        <div class="alert alert-danger">
+            Bu role ait bir kullanıcı bulunamadı. Lütfen aşağıdan ekleyiniz.
+        </div>
+    }else{
+        <table class="table table-bordered">
+        @foreach (var item in Model.Members)
+        {
+
+            
+                <tr>
+                    <th> Ad</th>
+                    <th> Soyad</th>
+                    <th> Kullanıcı Adı</th>
+                    <th>Kullanıcıyı Çıkar (Kullanıcıyı silmek istediğiniz kişinin kutusu basılı olmalı)</th>
+                </tr>
+                
+
+                  <tr>
+                    <td> @item.FirstName</td>
+                    <td> @item.LastName</td>
+                    <td> @item.UserName</td>
+                    <td><input type="checkbox" name="IdsToDelete" value="@item.Id"></td>
+                    
+                </tr>
+                
+                
+            
+            
+        }
+        </table>
+    }
+
+
+     <h5 > 
+        <span class="text-info">@Model.roleName </span> isimli role kullanıcı ekle.
+    </h5>
+
+    @if(Model.NonMembers.Count() == 0){
+        <div class="alert alert-danger">
+            Bu role ait olmayan bir kullanıcı bulunamadı.
+        </div>
+    }else{
+        <table class="table table-bordered">
+        @foreach (var item in Model.NonMembers)
+        {
+
+            
+                <tr>
+                    <th> Ad</th>
+                    <th> Soyad</th>
+                    <th> Kullanıcı Adı</th>
+                    <th>Kullanıcıyı Ekle (Kullanıcıyı eklemek istediğiniz kişinin kutusu basılı olmalı)</th>
+                </tr>
+                
+
+                  <tr>
+                    <td> @item.FirstName</td>
+                    <td> @item.LastName</td>
+                    <td> @item.UserName</td>
+                    <td><input type="checkbox" name="IdsToAdded" value="@item.Id"></td>
+                    
+                </tr>
+                
+                
+            
+            
+        }
+        </table>
+    }
+
+
+    
+    <button class="btn btn-primary" type="submit">Değişiklikleri kaydet</button>
+    
+    
+    </form>
+
+</div>

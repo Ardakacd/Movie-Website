@@ -1,0 +1,145 @@
+@model AllModel
+@{
+    Layout = "_Layout";
+}
+
+
+<div class="container">
+@if(@Model.categories.Count != 0){
+
+    <h5 class="lead mt-5">Kategoriler ile ilgili arama sonuçları:</h5>
+
+    
+    
+         <p class="card-text d-inline">
+               @for (int i = 0; i < @Model.categories.Count(); i++)
+               {
+                   @if(i == @Model.categories.Count-1){
+                       <a href="/category-detail/@Model.categories[i].CategoryId">@Model.categories[i].CategoryName</a>
+                   }else{
+                       <a href="/category-detail/@Model.categories[i].CategoryId">@Model.categories[i].CategoryName,</a>
+
+                   }
+               }
+                </p>
+    
+
+
+}
+
+@if(@Model.movies.Count != 0){
+
+    <h5 class="lead mt-5">Diziler ile ilgili arama sonuçları:</h5>
+
+    @foreach (var mov in @Model.movies)
+{
+    <div class="col-3">
+
+    <div class="card">
+
+        <div class="card-body">
+            
+            
+            <img src="~/images/@mov.PhotoUrl" class="card-image img-fluid w-100 h-100">
+            <h5 class="card-title mt-2 mb-1 text-center">@mov.Name</h5>
+
+
+        </div>
+
+        <div class="card-footer text-center">
+           
+
+            <a href="/movie-detail/@mov.MovieId" class="btn btn-success ml-3 ">Detay</a>
+        </div>
+
+                </div>
+            
+            </div>
+
+}
+}
+
+
+@if(@Model.players.Count != 0){
+
+    <h5 class="lead mt-5">Oyuncular ile ilgili arama sonuçları:</h5>
+
+      @foreach (var item in @Model.players)
+        {
+            <div class="col-3">
+                <div class="card">
+
+        <div class="card-body">
+            
+            
+            <img src="~/images/@item.PhotoUrl" class="card-image img-fluid  w-100 h-100">
+
+
+            <h5 class="card-title">@item.Name</h5>
+
+        
+
+        </div>
+
+        <div class="card-footer d-flex justify-content-center">
+            
+
+            <a href="/player-detail/@item.PlayerId" class="btn btn-success">Detay</a>
+        </div>
+
+                </div>
+            </div>   
+
+        }
+
+
+}
+
+@if(@Model.directors.Count != 0){
+
+    <h5 class="lead mt-5">Yönetmenler ile ilgili arama sonuçları:</h5>
+
+       @foreach (var item in @Model.directors)
+        {
+            <div class="col-3">
+                <div class="card">
+
+        <div class="card-body">
+            
+            
+            <img src="~/images/@item.PhotoUrl" class="card-image img-fluid w-100 h-100">
+
+
+            <h5 class="card-title">@item.Name</h5>
+
+                
+
+        </div>
+
+        <div class="card-footer d-flex justify-content-center">
+            
+
+            <a href="/director-detail/@item.DirectorId" class="btn btn-success">Detay</a>
+        </div>
+
+                </div>
+            </div>   
+
+        }
+
+
+}
+
+
+
+
+
+@if(@Model.directors.Count == 0 && @Model.movies.Count == 0 && @Model.categories.Count == 0 && @Model.players.Count == 0 ){
+
+    <strong class="mt-5">Pardon aradığınız isimle eşlesen bir şey bulamadık.</strong>
+
+
+
+}
+
+</div>
